@@ -1,0 +1,74 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<style>
+		html,
+		body {
+			height: 100%;
+			width: 100%;
+		}
+
+		#content {
+			height: 100%;
+			width: 100%;
+			text-align: center;
+			margin-top: 70px;
+		}
+
+		a {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="content">
+		<a href="#">
+			<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 80 80" id="social-twitter-icon">
+				<path class="si-grid" fill="#ffffff" d="M0 0h80v80H0z"></path>
+				<path class="si-splash" id="twitter-splash" fill="#999999" fill-rule="nonzero" d="M31.73994 72.48838c-11.444275-5.18428-5.9998-8.9997-10.999633-17.9994-4.999832-8.999698-17.872137-8.437337-17.206565-21.137207.665572-12.69987 17.155233-9.957153 22.206398-18.861454 5.051165-8.9043 21.02869-13.15246 28.99903 0 7.97034 13.15245 24.188624 9.05915 17.40265 31.62607-6.78597 22.56691-28.957606 31.55626-40.40188 26.37199z" style="visibility: hidden"></path>
+				<path class="si-circle" id="twitter-circle" fill="#999999" d="M40 16c-13.254822 0-24 10.745178-24 24 0 13.256772 10.745178 24 24 24s24-10.743228 24-24c0-13.254822-10.746152-24-24-24z"></path>
+				<path class="si-icon" id="twitter-icon" fill="#FFF" d="M51.44107 34.982305c.010742.21641.014875.433633.014875.653297C51.455945 42.307692 46.296755 50 36.862763 50 33.966608 50 31.269647 49.164463 29 47.73258c.401693.046373.80917.069966 1.223262.069966 2.403544 0 4.615334-.80706 6.370053-2.160842-2.244024-.041492-4.1376-1.50185-4.790558-3.507302.312428.060204.633947.090306.96456.090306.467814 0 .92075-.060204 1.351373-.176545-2.34734-.463735-4.115285-2.505796-4.115285-4.949762 0-.02196 0-.04311.000827-.06508.690977.37831 1.481965.6053 2.32337.63215-1.376995-.90713-2.282044-2.45047-2.282044-4.2029 0-.92503.252918-1.79311.694284-2.53834 2.530003 3.054144 6.309717 5.064476 10.57295 5.274377-.087613-.368547-.133072-.754993-.133072-1.15039 0-2.7873 2.296096-5.04821 5.129435-5.04821 1.475353 0 2.807716.613433 3.743346 1.593785 1.16872-.22536 2.26634-.64679 3.25735-1.225237-.38433 1.179678-1.19681 2.16898-2.25642 2.792988 1.03895-.122034 2.02747-.39377 2.94657-.79486-.68601 1.014524-1.55635 1.903757-2.55893 2.61563z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<!-- Idea and SVG icon from Anton Korzhuk https://codepen.io/antonkor/pen/ZKYWBL -->
+
+	<script src="./js/vendors/jquery.js"></script>
+	<script src="./js/vendors/kute.js"></script>
+	<script src="./js/vendors/kute-svg.js"></script>
+	<script src="./js/vendors/kute-attr.js"></script>
+
+	<script>
+
+		var twitterColor = "#31A3DC";
+		var grayColor = "#999999";
+
+		var splashTween = KUTE.to('.si-circle', { path: 'M31.73994 72.48838c-11.444275-5.18428-5.9998-8.9997-10.999633-17.9994-4.999832-8.999698-17.872137-8.437337-17.206565-21.137207.665572-12.69987 17.155233-9.957153 22.206398-18.861454 5.051165-8.9043 21.02869-13.15246 28.99903 0 7.97034 13.15245 24.188624 9.05915 17.40265 31.62607-6.78597 22.56691-28.957606 31.55626-40.40188 26.37199z', attr: { fill: twitterColor } },
+			{
+				'morphPrecision': 5, 'morphIndex': 29, 'reverseSecondPath': true, easing: 'easingElasticInOut'
+			});
+
+		var circleTween = KUTE.to('.si-circle', { path: 'M40 16c-13.254822 0-24 10.745178-24 24 0 13.256772 10.745178 24 24 24s24-10.743228 24-24c0-13.254822-10.746152-24-24-24z', attr: { fill: grayColor } },
+			{
+				'reverseSecondPath': true, 'morphPrecision': 5, 'morphIndex': 29,
+				easing: 'easingElasticInOut'
+			});
+
+		var self = this;
+
+		$("#social-twitter-icon").hover(function () {
+			self.circleTween.stop();
+			self.splashTween.start();
+		}, function () {
+			self.splashTween.stop();
+			self.circleTween.start();
+		})
+
+	</script>
+</body>
+
+</html>
